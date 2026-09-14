@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BUNDLE PEPS 2026</title>
+	<meta name="description" content="Quatorze équipes ont leur pack dans la boutique Overwatch. Une seule est française.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="icon" type="image/png" href="favicon.ico">
+	<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,400..900;1,75..125,400..900&display=swap" rel="stylesheet">
+	<style>
+		:root{
+			--or:#EEC932;
+			--brique:#A63A20;
+			--encre:#1C0F07;
+			--creme:#F7F0E4;
+			--sourd:#6E4A34;
+			--bleu:#2B3FA0;
+			--rouge:#D8342B;
+		}
+		*{box-sizing:border-box;margin:0;padding:0}
+		body{
+			font-family:"Archivo",system-ui,sans-serif;
+			font-variation-settings:"wdth" 100;
+			background:var(--or);color:var(--encre);
+			font-size:18px;line-height:1.5;
+			-webkit-font-smoothing:antialiased;overflow-x:hidden;
+		}
+		a{color:inherit}
+		img{display:block;max-width:100%}
+		::selection{background:var(--encre);color:var(--or)}
+		:focus-visible{outline:4px solid var(--encre);outline-offset:2px}
+
+		.zone{padding-inline:clamp(18px,5vw,80px)}
+		.limite{max-width:1240px;margin-inline:auto}
+
+		.affiche{
+			font-weight:900;font-style:italic;text-transform:uppercase;
+			font-variation-settings:"wdth" 79;
+			line-height:.83;letter-spacing:-.025em;
+		}
+		.courant{max-width:54ch;font-size:clamp(17px,1.5vw,19px)}
+
+		/* ---------- boutons ---------- */
+		.bouton{
+			display:inline-block;text-decoration:none;cursor:pointer;border:0;
+			font-family:inherit;font-weight:900;font-style:italic;text-transform:uppercase;
+			font-variation-settings:"wdth" 88;letter-spacing:-.01em;
+			font-size:clamp(16px,1.8vw,21px);
+			padding:.62em 1.25em;
+			background:var(--encre);color:var(--or);
+			box-shadow:6px 6px 0 var(--brique);
+			transition:box-shadow .12s,transform .12s;
+		}
+		.bouton:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--brique)}
+		.bouton:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--brique)}
+		.bouton--creux{background:transparent;color:var(--encre);box-shadow:inset 0 0 0 3px var(--encre)}
+		.bouton--creux:hover{background:var(--encre);color:var(--or);box-shadow:inset 0 0 0 3px var(--encre)}
+		.bouton--clair{background:var(--or);color:var(--encre);box-shadow:6px 6px 0 var(--encre)}
+		.bouton--clair:hover{box-shadow:3px 3px 0 var(--encre)}
+
+		.pastille{
+			width:72px;flex:none;border-radius:50%;display:grid;place-items:center;
+		}
+		.pastille img{width:78%;height:78%}
+
+		.une{padding-top:22px;padding-bottom:clamp(26px,4vw,44px)}
+		.enseigne{display:flex;align-items:center;justify-content:space-between;gap:20px}
+		.enseigne .nom{display:flex;align-items:center;gap:14px}
+		.enseigne .nom b{font-weight:900;font-style:italic;text-transform:uppercase;font-variation-settings:"wdth" 86;font-size:20px;letter-spacing:-.02em}
+		.enseigne .nom span{display:block;font-size:12px;font-weight:700;color:var(--sourd);font-variation-settings:"wdth" 112}
+		.crete{display:flex;width:150px;height:5px;margin:18px 0 clamp(20px,3vw,34px)}
+		.crete i{flex:1}
+
+		.une h1{font-size:clamp(46px,10.4vw,152px);max-width:15ch}
+		.une h1 em{font-style:italic;color:var(--brique);display:block}
+
+		.placard{margin-top:clamp(26px,3.6vw,44px);border:5px solid var(--encre);background:#DCE0E4}
+		.placard img{width:100%}
+
+		.bas-affiche{
+			margin-top:clamp(24px,3vw,36px);
+			display:grid;grid-template-columns:minmax(0,1.25fr) auto;gap:clamp(20px,3vw,48px);align-items:end;
+		}
+		@media(max-width:840px){.bas-affiche{grid-template-columns:1fr;align-items:start}}
+		.chapeau{font-size:clamp(18px,2.1vw,26px);font-weight:600;line-height:1.3;max-width:40ch}
+		.actions{display:flex;flex-wrap:wrap;gap:14px}
+		.ligne-produit{
+			margin-top:clamp(24px,3vw,36px);padding-top:18px;border-top:3px solid var(--encre);
+			display:flex;flex-wrap:wrap;gap:6px 26px;align-items:baseline;
+		}
+		.ligne-produit span{font-weight:700;font-variation-settings:"wdth" 108;font-size:clamp(13px,1.5vw,16px)}
+		.ligne-produit b{font-weight:900}
+
+		.banderole{
+			background:var(--encre);color:var(--or);
+			padding:14px 0;overflow:hidden;white-space:nowrap;
+			border-block:3px solid var(--brique);
+		}
+		.banderole p{
+			display:inline-block;padding-right:1.2em;
+			font-weight:900;font-style:italic;text-transform:uppercase;
+			font-variation-settings:"wdth" 82;font-size:clamp(20px,3.2vw,38px);
+			animation:defile 32s linear infinite;
+		}
+		@keyframes defile{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+		.quatorze{background:var(--brique);color:var(--creme);padding-block:clamp(56px,9vw,120px)}
+		.quatorze h2{font-size:clamp(34px,6.6vw,88px);max-width:13ch}
+		.quatorze .courant{margin-top:22px;color:#FBE9D9;}
+		.grille-clubs{margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px}
+		.club{
+			background:#8E2E17;color:#D9A895;padding:20px 16px 18px;min-height:104px;
+			display:flex;flex-direction:column;justify-content:space-between;
+			font-weight:700;font-size:15px;line-height:1.15;
+		}
+		.club i{font-style:normal;font-size:12px;font-weight:600;opacity:.72}
+		.club--nous{
+			background:var(--encre);color:var(--or);
+			box-shadow:0 0 0 4px var(--creme);
+			grid-column:span 2;flex-direction:row;align-items:center;gap:14px;
+		}
+		@media(max-width:520px){.club--nous{grid-column:span 2}}
+		.club--nous img{width:64px;height:64px;flex:none}
+		.club--nous b{display:block;font-weight:900;font-style:italic;text-transform:uppercase;font-variation-settings:"wdth" 84;font-size:clamp(20px,2.3vw,28px);line-height:.95;letter-spacing:-.02em}
+		.club--nous i{opacity:.8;font-weight:700;color:var(--creme)}
+		.apres-grille{margin-top:30px;font-weight:900;font-style:italic;text-transform:uppercase;font-variation-settings:"wdth" 84;font-size:clamp(20px,3.2vw,40px);line-height:1;max-width:22ch}
+
+		.planche{background:#150B05;color:var(--creme);padding-block:clamp(56px,9vw,120px)}
+		.planche h2{font-size:clamp(34px,6.6vw,88px)}
+		.planche .courant{margin-top:20px;color:#CBB6A0}
+		.pieces{margin-top:clamp(30px,4vw,50px);display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+		@media(max-width:700px){.pieces{grid-template-columns:repeat(2,1fr)}}
+		.piece{border:2px solid #40291A;background:#1E1008;display:flex;flex-direction:column;overflow:hidden}
+		.piece--large{grid-column:span 3}
+		@media(max-width:700px){.piece--large{grid-column:span 2}}
+		.piece figure{background:#0E0703}
+		.piece img{width:100%;object-fit:cover;aspect-ratio:1}
+		.piece--large img{aspect-ratio:auto;height:200px;}
+		.piece .texte{padding:16px 16px 18px;display:flex;flex-direction:column;gap:7px;flex:1}
+		.piece .genre{font-size:12px;font-weight:700;color:var(--or);font-variation-settings:"wdth" 112}
+		.piece .nom{font-weight:900;font-style:italic;text-transform:uppercase;font-variation-settings:"wdth" 84;line-height:.96;letter-spacing:-.02em;font-size:clamp(17px,1.9vw,23px)}
+		.piece--large .nom{font-size:clamp(22px,3vw,34px)}
+		.piece p{font-size:14px;line-height:1.4;color:#C2AC96}
+		.piece--texte{background:var(--or);color:var(--encre);justify-content:center;padding:20px}
+		.piece--texte .nom{font-size:clamp(19px,2.2vw,26px)}
+		.piece--texte ul{margin-top:10px;display:grid;gap:5px;list-style:none;font-weight:700;font-size:14px}
+		.piece--texte li{padding-left:16px;position:relative}
+		.piece--texte li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:2px;background:var(--brique)}
+
+		.repliques{padding-block:clamp(56px,9vw,120px)}
+		.repliques h2{font-size:clamp(34px,6.6vw,88px);max-width:12ch}
+		.liste-obj{margin-top:clamp(28px,4vw,46px);border-top:3px solid var(--encre)}
+		.obj{border-bottom:3px solid var(--encre)}
+		.obj summary{
+			cursor:pointer;list-style:none;padding:22px 0;display:flex;align-items:baseline;gap:18px;
+			font-weight:900;font-style:italic;text-transform:uppercase;
+			font-variation-settings:"wdth" 82;letter-spacing:-.02em;
+			font-size:clamp(21px,3.9vw,46px);line-height:1;
+		}
+		.obj summary::-webkit-details-marker{display:none}
+		.obj summary .signe{flex:none;font-size:.58em;color:var(--brique);transition:transform .2s}
+		.obj[open] summary .signe{transform:rotate(45deg)}
+		.obj summary:hover{color:var(--brique)}
+		.obj .repli{padding:0 0 26px clamp(26px,3.4vw,52px);display:grid;gap:14px}
+		.obj .frappe{font-weight:900;font-style:italic;font-size:clamp(19px,2.3vw,28px);line-height:1.2;max-width:30ch}
+		.obj .detail{max-width:56ch;color:#4A3120}
+
+		.fin{background:var(--brique);color:var(--creme);padding-block:clamp(56px,9vw,120px);position:relative;overflow:hidden}
+		.fin .limite{position:relative;z-index:2;max-width:760px;margin-inline:0}
+		@media(min-width:1241px){.fin .limite{margin-inline:auto;padding-right:0}}
+		.fin h2{font-size:clamp(42px,9vw,132px);max-width:11ch}
+		.coq{
+			position:absolute;right:-2%;bottom:0;z-index:1;
+			height:min(92%,620px);width:auto;pointer-events:none;
+			filter:drop-shadow(-14px 0 0 rgba(28,15,7,.13));
+		}
+		@media(max-width:1080px){.coq{opacity:.16;right:-14%;height:78%}}
+		.compte{margin-top:24px;font-weight:700;font-size:clamp(16px,1.9vw,21px);color:#FBE0CE}
+		.compte b{font-weight:900;font-style:italic;color:var(--or)}
+		.marche{margin-top:clamp(28px,4vw,44px);display:grid;gap:3px;grid-template-columns:repeat(3,1fr);background:rgba(255,255,255,.22)}
+		@media(max-width:760px){.marche{grid-template-columns:1fr}}
+		.marche li{background:var(--brique);padding:18px 20px 20px;list-style:none;font-weight:600;font-size:15px;line-height:1.35}
+		.marche li b{display:block;font-weight:900;font-style:italic;text-transform:uppercase;font-variation-settings:"wdth" 86;font-size:19px;margin-bottom:6px;color:var(--or)}
+		.fin .bouton{margin-top:clamp(28px,4vw,42px)}
+
+		.pied{background:var(--encre);color:#8C7561;padding-block:28px;font-size:13px;line-height:1.7}
+		.pied div{display:flex;flex-wrap:wrap;gap:6px 28px;justify-content:space-between;align-items:center}
+
+		@media (prefers-reduced-motion:reduce){
+			*{animation:none!important;transition:none!important}
+			.banderole{transform:none}
+		}
+		/* ============ MENTIONS ============ */
+		.mentions{
+			background:var(--creme);color:var(--sourd);
+			padding-block:clamp(28px,4vw,42px);
+			border-top:3px solid var(--encre);
+		}
+		.mentions .grille{
+			display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+			font-size:14px;line-height:1.5;
+		}
+		@media(max-width:760px){.mentions .grille{grid-template-columns:1fr}}
+		.mentions h4{
+			font-weight:900;font-style:italic;text-transform:uppercase;
+			font-variation-settings:"wdth" 90;font-size:13px;letter-spacing:.01em;
+			color:var(--encre);margin-bottom:6px;
+		}
+		.mentions p{max-width:38ch}
+
+		.note-cta{
+			margin-top:14px;font-size:13px;font-weight:600;color:#FBE0CE;
+			max-width:34ch;
+		}
+	</style>
+	</style>
+</head>
+<body>
+
+<header class="une zone limite">
+	<div class="enseigne">
+	    <span class="nom">
+	      <span class="pastille"><img src="team_peps_logo.avif" alt="Team Peps"></span>
+	      <span><b>Team Peps</b><span>La main sur la Peps, depuis 2022</span></span>
+	    </span>
+		<a class="bouton bouton--creux" href="#prendre">Aller à la boutique</a>
+	</div>
+
+	<div class="crete" aria-hidden="true"><i></i><i></i><i></i></div>
+
+	<h1 class="affiche">Quatorze équipes ont leur pack. <em>Une seule est française.</em></h1>
+
+	<div class="bas-affiche">
+		<p class="chapeau">Blizzard reverse une part des ventes à l’équipe dont tu prends le pack. Le tien peut doit soutenir la Team Peps</p>
+		<div class="actions">
+			<a class="bouton" href="#prendre">Prendre le pack</a>
+			<a class="bouton bouton--creux" href="#dedans">Voir ce qu’il y a dedans</a>
+		</div>
+	</div>
+
+	<p class="ligne-produit">
+		<span><b>Team Peps</b> — OWCS 2026 Partner Team Bundle</span>
+		<span>10 objets</span>
+		<span>4 500 coins</span>
+		<span>Boutique Overwatch, onglet Esport</span>
+	</p>
+</header>
+
+<div class="banderole" aria-hidden="true"><p id="defile"></p></div>
+
+<section class="quatorze">
+	<div class="zone limite">
+		<h2 class="affiche">Boost ton skill en jeu avec les skins peps</h2>
+		<p class="courant">En plus d'être d'avoir le plus beau skin, 100% des joueurs ayant équipé un skin PEPS ont augmentsé leurs taux de victoire de 67%</p>
+		<div class="placard">
+			<img src="skins.png">
+		</div>
+	</div>
+</section>
+
+<section class="planche" id="dedans">
+	<div class="zone limite">
+		<h2 class="affiche">Dix objets aux couleurs du club.</h2>
+		<p class="courant">Arbore complètement le style de la Team Peps, et tout ce qui se voit autour : ta carte, ton icône, ton spray, ton charme.</p>
+
+		<div class="pieces">
+			<article class="piece piece--large">
+				<figure><img src="banner.png" alt="Carte de visite Team Peps : les toits de Paris, la tour Eiffel et le coq dans le ciel" loading="lazy" width="1700" height="341"></figure>
+				<div class="texte">
+					<span class="genre">Carte de visite</span>
+					<h3 class="nom">Réponds à l'appel des pépites</h3>
+					<p>Deviens une pépite, il est l'heure de sauver gottham</p>
+				</div>
+			</article>
+
+			<article class="piece">
+				<figure><img src="tag.png" alt="Spray Team Peps : un coq brandissant un drapeau au logo du club" loading="lazy"></figure>
+				<div class="texte">
+					<span class="genre">Spray</span>
+					<h3 class="nom">FREE POULET</h3>
+					<p>Sur les portes de spawn, les murs et sur tes adversaires après un tbag !</p>
+				</div>
+			</article>
+
+			<article class="piece">
+				<figure><img src="icon.png" alt="Icône de joueur Team Peps : un poussin à crête tricolore qui sort de sa coquille" loading="lazy"></figure>
+				<div class="texte">
+					<span class="genre">Icône de joueur</span>
+					<h3 class="nom">Le poussin tricolore</h3>
+					<p>Le signe de reconnaissance entre supporter PEPS dans un lobby. Ca commence a trembler en face !</p>
+				</div>
+			</article>
+
+			<article class="piece">
+				<figure><img src="charm.png" alt="Charme d'arme Team Peps accrochée à une arme dans Overwatch" loading="lazy"></figure>
+				<div class="texte">
+					<span class="genre">Charme d’arme</span>
+					<h3 class="nom">La main sur ton arme</h3>
+					<p>Le seul objet du pack que tu regardes vraiment pendant toute la partie, puisqu’il pend au bout de ton flingue.</p>
+				</div>
+			</article>
+		</div>
+	</div>
+</section>
+
+<section class="repliques">
+	<div class="zone limite">
+		<h2 class="affiche">Ce que tu vas répondre.</h2>
+		<div class="liste-obj" id="objections"></div>
+	</div>
+</section>
+
+<section class="fin" id="prendre">
+	<img class="coq" src="tag.png" alt="" aria-hidden="true">
+	<div class="zone limite">
+		<h2 class="affiche">Prends le pack Peps.</h2>
+		<p class="compte" id="compte"></p>
+		<ol class="marche">
+			<li><b>Boutique</b>Lance Overwatch et ouvre la Boutique.</li>
+			<li><b>Onglet Esport</b>Descends jusqu’aux équipes partenaires OWCS 2026.</li>
+			<li><b>Team Peps</b>Prends le Bundle et monte jusqu'au top 500 pour un jour rejoindre la Team Peps</li>
+		</ol>
+		<a class="bouton bouton--clair" href="https://eu.shop.battle.net/fr-fr/family/overwatch/items/2115740/team-peps-owcs-2026-partner-team-mega-bundle" target="_blank" rel="noopener">Ouvrir la boutique</a>
+	</div>
+</section>
+<section class="mentions">
+	<div class="zone limite">
+		<div class="grille">
+			<div>
+				<h4>Page non officielle</h4>
+				<p>Cette page n’est ni éditée, ni sponsorisée, ni approuvée par Blizzard Entertainment.</p>
+			</div>
+			<div>
+				<h4>Aucune vente ici</h4>
+				<p>Rien ne se vend sur cette page. Le bouton renvoie vers la boutique officielle Overwatch, où l’achat se fait directement auprès de Blizzard.</p>
+			</div>
+			<div>
+				<h4>Marques citées</h4>
+				<p>Overwatch, OWCS et les éléments de jeu montrés appartiennent à Blizzard Entertainment. Le nom et le logo Team Peps appartiennent au club.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="pied">
+	<div class="zone limite">
+		<span>Fais avec la PEPS par Serkox</span>
+		<span>Overwatch et OWCS appartiennent à Blizzard Entertainment. Page non affiliée à Blizzard Entertainment.</span>
+	</div>
+</footer>
+
+<script>
+
+	const PHRASES = [
+		"Seule équipe française de l’OWCS",
+		"Le seul pack de skins qui t'apporte un avantage compétitif",
+		"La main sur la Peps depuis 2022",
+		"Augmente ton skill en jeu avec les skins Peps",
+		"N'oublie pas de prendre le bundle sur tes comptes secondaires",
+		"100% des joueurs ayant équipé un skin PEPS ont augmenté leurs taux de victoire de 67%",
+		"Prend le bundle PEPS et augmente tes chances de devenir FDGod",
+	];
+
+	(function banderole(){
+		const p = document.getElementById('defile');
+		const cycle = PHRASES.join(" \u25C6 ") + " \u25C6 ";
+
+		p.textContent = cycle;
+		const n = Math.max(1, Math.ceil(window.innerWidth / p.offsetWidth));
+		p.textContent = cycle.repeat(n * 2);
+	})();
+
+	const REPONSES = [
+		{q:"« 4 500 coins, c’est cher »",
+			f:"La boutique te vend un skin seul 1 900 coins sans que personne n’en profite.",
+			t:"Ici tu as 6 skins, 4 items, et une part du montant part vers le club. À contenu égal c’est l'investissement le plus rentable de 2026, et le seul dont quelqu’un d’autre que Blizzard voit la couleur."},
+		{q:"« Je joue pas Jetpack Cat »",
+			f:"Neuf objets sur dix se moquent complètement de ton main.",
+			t:"Le charme, le spray, la carte, l’icône s’affichent quel que soit ton héros. Et le jour où tu voudras devenir FDGod, tu seras content de l’avoir."},
+		{q:"« J’ai déjà trop de skins »",
+			f:"Aucun d’eux n’a jamais permis de soutenir un club français.",
+			t:"Tes 67 skins de battle pass ne changent rien à l’écosystème. Celui-là, si : le club touche une part des ventes du bundle. C’est le seul endroit du jeu où ton choix de cosmétique a une conséquence en dehors de ton compte."},
+		{q:"« Je regarde pas l’OWCS »",
+			f:"Personne ne te demande de connaître le roster.",
+			t:"Tu joues au jeu, tu allais lâcher des coins un jour ou l’autre. Autant les mettre là où ils servent à une structure qui joue avec ton drapeau plutôt que dans un skin de boutique de plus."},
+		{q:"« J’attends une promo »",
+			f:"Les packs d’équipe partent avec la saison compétitive.",
+			t:"Ils sont liés à l’année OWCS et quittent la rotation quand elle se termine. Les skins d’équipe des saisons précédentes ne sont jamais revenus en boutique. Si tu veux soutenir la Team Peps, c’est maintenant ou jamais."}
+	];
+	const listeObj = document.getElementById('objections');
+	REPONSES.forEach((r, i) => {
+		const d = document.createElement('details');
+		d.className = 'obj';
+		if (i === 0) d.open = true;
+		d.innerHTML =
+			'<summary><span class="signe">+</span><span>' + r.q + '</span></summary>' +
+			'<div class="repli"><p class="frappe">' + r.f + '</p><p class="detail">' + r.t + '</p></div>';
+		listeObj.appendChild(d);
+	});
+</script>
+</body>
+</html>
